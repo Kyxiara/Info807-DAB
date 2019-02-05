@@ -2,6 +2,9 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("623c6fac-82a0-4936-8790-f546ce7701d9")
 public class Carte {
+
+    //Attributes
+
     @objid ("9ff9cc69-f522-48cd-b5ee-b95d8a73f470")
     private String noCarte;
 
@@ -11,14 +14,16 @@ public class Carte {
     @objid ("5b083c1a-2860-48a2-915e-9b6c412aa41b")
     private int nbEssaisRestant;
 
+    //Methods
+
     @objid ("669d82cc-0a28-4209-8dd6-b043d2b81cb6")
     public boolean codeOK(String codeS) {
-        return true;
+        return true; //TODO
     }
 
     @objid ("653ec07a-4167-4a19-8788-d9ca91c2719d")
-    public void getNoCarte() {
-
+    public String getNoCarte() {
+        return noCarte;
     }
 
 }

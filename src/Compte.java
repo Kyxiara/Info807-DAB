@@ -2,6 +2,9 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("87850a0f-5d60-4722-bb3d-ca023852cd42")
 public class Compte {
+
+    //Attributes
+
     @objid ("191536ce-0266-408e-a557-46fb6acc98cf")
     private float Solde;
 
@@ -12,6 +15,8 @@ public class Compte {
     private float plafondRetrait;
 
     private EtatCompte etat = new etatNonSelectionne(this);
+
+    //Getters and Setters
 
     public float getSolde() {
         return Solde;
@@ -29,13 +34,18 @@ public class Compte {
         this.noCompte = noCompte;
     }
 
-    public float getPlafondRetrait() {
-        return plafondRetrait;
-    }
+    public float getPlafondRetrait() { return plafondRetrait; }
 
     public void setPlafondRetrait(float plafondRetrait) {
         this.plafondRetrait = plafondRetrait;
     }
+
+    @objid ("131d4427-69da-43fb-badc-c8bc0caaa4d4")
+    public void setEtat(EtatCompte etat) {
+        this.etat = etat;
+    }
+
+    //Methods
 
     @objid ("ed3c524f-7cad-487f-b2af-3638f09e55e7")
     public String toString() {
@@ -45,11 +55,6 @@ public class Compte {
     @objid ("ba638c8f-9bbd-48f9-92c9-d24c723f3403")
     public void selectionne(Boolean etat) {
         this.etat.selectionne(etat);
-    }
-
-    @objid ("131d4427-69da-43fb-badc-c8bc0caaa4d4")
-    public void setEtat(EtatCompte etat) {
-        this.etat = etat;
     }
 
     @objid ("f60a3894-0db7-4ab0-bcb6-0ecf9f38eb11")

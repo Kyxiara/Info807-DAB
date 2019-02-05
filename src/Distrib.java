@@ -8,6 +8,9 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid ("0d428a05-4835-4a63-9729-0f9f70f6d3f2")
 public class Distrib {
+
+    //Attributes
+
     @mdl.prop
     @objid ("b071e6a9-eaa5-425d-8634-bf110f912bbf")
     private int nbBillets10;
@@ -31,6 +34,34 @@ public class Distrib {
     public Banque BanqueDeRattachement;
 
     private String noCarte;
+
+    private EtatDistrib etat = new etatAttendreOperation(this);
+
+    //Getters and Setters
+
+    public Banque getBanqueDeRattachement() {
+        return BanqueDeRattachement;
+    }
+
+    public void setBanqueDeRattachement(Banque banqueDeRattachement) {
+        BanqueDeRattachement = banqueDeRattachement;
+    }
+
+    public String getNoCarte() {
+        return noCarte;
+    }
+
+    public void setNoCarte(String noCarte) {
+        this.noCarte = noCarte;
+    }
+
+    public EtatDistrib getEtat() {
+        return etat;
+    }
+
+    public void setEtat(EtatDistrib etat) {
+        this.etat = etat;
+    }
 
     @mdl.propgetter
     private int getNbBillets10() {
@@ -80,34 +111,6 @@ public class Distrib {
         this.nbBillets100 = value;
     }
 
-    @objid ("2f3ffab7-340f-4571-b19f-fe9c6fad5d32")
-    public void insererCarte(String noCarte, String code, int nbEssaisRestants) {
-        //TODO
-    }
-
-    @objid ("4c9133e8-305b-40d1-81b9-3cdf796db78f")
-    public boolean saisirCode(int codeSaisi) {
-        return true; //TODO
-    }
-
-    @objid ("30c69ab3-7411-479b-8506-bb13bd6de7ec")
-    public void choisirOperation(NatureOperation noOp) {
-        ArrayList<Compte> comptes = BanqueDeRattachement.recupereComptes(noCarte);
-        switch (noOp){
-            case Consultation:
-                afficheSoldes(comptes);
-                selectionneCompte(getChoice(comptes));
-                break;
-            case Retrait:
-                Compte compteChoisi = getChoice(comptes);
-                Scanner sc = new Scanner(System.in);
-                System.out.println("Veuillez saisir le montant a retiré : ");
-                float montant = sc.nextFloat();
-                retrait(montant, compteChoisi);
-                break;
-        }
-    }
-
     @objid ("37826b7b-0b51-4700-9269-233a66fba8bb")
     Carte getCarteInseree() {
         // Automatically generated method. Please delete this comment before entering specific code.
@@ -120,25 +123,39 @@ public class Distrib {
         this.carteInseree = value;
     }
 
+    //Methods
+
+    @objid ("2f3ffab7-340f-4571-b19f-fe9c6fad5d32")
+    public void insererCarte(String noCarte, String code, int nbEssaisRestants) {
+        //TODO
+    }
+
+    @objid ("4c9133e8-305b-40d1-81b9-3cdf796db78f")
+    public boolean saisirCode(int codeSaisi) {
+        return true; //TODO
+    }
+
+    @objid ("30c69ab3-7411-479b-8506-bb13bd6de7ec")
+    public void choisirOperation(NatureOperation noOp) {
+        etat.choisirOperation(noOp);
+    }
+
     void afficheSoldes(ArrayList<Compte> comptes){
-        for (Compte c: comptes) {
-            System.out.println(c.toString());
-        }
+        etat.afficheSoldes(comptes);
     }
 
     void selectionneCompte(Compte compte){
-        compte.selectionne(true);
-        System.out.println(compte.toString());
+        etat.selectionneCompte(compte);
     }
 
     Compte getChoice(ArrayList<Compte> comptes){
         System.out.println("Veuillez saisir un compte : ");
-        int i = -1;
-        for (Compte c: comptes) {
-            System.out.println(i++ + ". Compte : " + c.getNoCompte());
-        }
         Scanner sc = new Scanner(System.in);
         return comptes.get(sc.nextInt());
+    }
+
+    public void afficheCompte(Compte compte){
+        etat.afficheCompte(compte);
     }
 
     public boolean assezDargent(float montant) {
@@ -146,21 +163,14 @@ public class Distrib {
     }
 
     public boolean retrait(float montant, Compte compte){
-        if (!assezDargent(montant)){
-            return false;
-        }
-        if (!compte.retrait(montant) || compte.getPlafondRetrait() < montant){
-            return false;
-        }
-        envoyerBillets(montant);
-        return true;
+        return etat.retrait(montant, compte);
     }
 
     public void envoyerBillets(float montant){
-        //TODO
+        etat.envoyerBillets(montant);
     }
 
     public float recupereBillets(){
-        return 0; ///TODO
+        return etat.recupereBillets();
     }
 }

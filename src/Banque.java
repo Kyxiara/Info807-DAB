@@ -6,6 +6,9 @@ import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
 @objid("cc49a434-27a0-40d0-a577-6174a3ae3a5b")
 public class Banque {
+
+    //Attributes
+
     @mdl.prop
     @objid("baa6c6ac-c757-4bc4-90ea-5079ea10856f")
     private String nomBanque;
@@ -19,6 +22,8 @@ public class Banque {
 
     @objid("8cbb231f-0ca2-40d7-a93c-6ebb0980c4c5")
     public List<Banque> autresBanques = new ArrayList<Banque>();
+
+    //Getters and Setters
 
     @mdl.propgetter
     private String getNomBanque() {
@@ -43,6 +48,8 @@ public class Banque {
         // Automatically generated method. Please do not modify this code.
         this.codeBanque = value;
     }
+
+    //Methods
 
     @objid("7e98eb37-285f-4101-9f98-3e5261f05350")
     public boolean estUnClient(String noCarte) {
