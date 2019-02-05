@@ -12,11 +12,13 @@ public class Carte {
     private int nbEssaisRestant;
 
     @objid ("669d82cc-0a28-4209-8dd6-b043d2b81cb6")
-    public boolean codeOK?(String codeS) {
+    public boolean codeOK(String codeS) {
+        return true;
     }
 
     @objid ("653ec07a-4167-4a19-8788-d9ca91c2719d")
     public void getNoCarte() {
+
     }
 
 }
