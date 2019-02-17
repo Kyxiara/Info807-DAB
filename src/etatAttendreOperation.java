@@ -10,9 +10,28 @@ public class etatAttendreOperation extends EtatDistrib {
         super(distrib);
     }
 
+    @Override
+    public void afficheUI() {
+        System.out.println("Bienvenue au crédit agricole");
+    }
+
+    @Override
+    public void interractionUI() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("selectionner une opération :");
+        System.out.println("1- Consultation");
+        System.out.println("2- Retrait");
+        int choix = sc.nextInt();
+        if(choix != 1){
+            System.err.println("cas non géré pour le moment");
+        } else {
+            distrib.choisirOperation(NatureOperation.Consultation);
+        }
+    }
+
     public void choisirOperation(NatureOperation noOp) {
         distrib.setEtat(new etatAttendreReceptionComptes(distrib));
-        ArrayList<Compte> comptes = distrib.getBanqueDeRattachement().recupereComptes(distrib.getNoCarte());
+        ArrayList<Compte> comptes = distrib.getBanqueDeRattachement().recupereComptes(distrib.getNoCarte());  // TODO faire dans un autre état ?
         switch (noOp){
             case Consultation:
                 distrib.afficheSoldes(comptes);

@@ -11,7 +11,7 @@ public class Client {
     //Method
 
     @objid ("2a84d03e-b6c4-4226-b54c-4c45301261de")
-    public ArrayList getComptes() {
+    public ArrayList<Compte> getComptes() {
         return comptes;
     }
 

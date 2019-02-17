@@ -1,6 +1,4 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import com.modeliosoft.modelio.javadesigner.annotations.mdl;
@@ -33,9 +31,11 @@ public class Distrib {
     @objid ("33fba089-53a8-4629-82ad-ac8dda4de582")
     public Banque BanqueDeRattachement;
 
-    private String noCarte;
-
     private EtatDistrib etat = new etatAttendreOperation(this);
+
+    public Distrib(Banque banqueDeRattachement){
+        setBanqueDeRattachement(banqueDeRattachement);
+    }
 
     //Getters and Setters
 
@@ -47,13 +47,6 @@ public class Distrib {
         BanqueDeRattachement = banqueDeRattachement;
     }
 
-    public String getNoCarte() {
-        return noCarte;
-    }
-
-    public void setNoCarte(String noCarte) {
-        this.noCarte = noCarte;
-    }
 
     public EtatDistrib getEtat() {
         return etat;
@@ -123,6 +116,10 @@ public class Distrib {
         this.carteInseree = value;
     }
 
+    public String getNoCarte() {
+        return carteInseree.getNoCarte();
+    }
+
     //Methods
 
     @objid ("2f3ffab7-340f-4571-b19f-fe9c6fad5d32")
@@ -172,5 +169,37 @@ public class Distrib {
 
     public float recupereBillets(){
         return etat.recupereBillets();
+    }
+
+    public void afficheUI(){
+        etat.afficheUI();
+    }
+
+    public void interractionUI(){
+        etat.interractionUI();
+    }
+
+    public static void ecrire(Couleur coul, String s) {
+        System.out.printf("\033[%d;1m%s\033[0m\n", coul.ordinal() + 31, s);
+    }
+
+    public static void main(String[] args) {
+        String noCarte = "123";
+        Carte carteInseree = new Carte(noCarte);
+        Client marcel = new Client();
+        CarteClient cc = new CarteClient(noCarte, marcel);
+        ArrayList<CarteClient> cartesDeLaBanque = new ArrayList<>();
+        cartesDeLaBanque.add(cc);
+        Banque creditAgricole = new Banque("CA", cartesDeLaBanque);
+        Distrib distribBourget = new Distrib(creditAgricole);
+        distribBourget.setBanqueDeRattachement(creditAgricole);
+        distribBourget.carteInseree = carteInseree;  // l'utilisateur est déjà authentifié
+
+        while(true){
+            distribBourget.afficheUI();
+            distribBourget.interractionUI();
+            distribBourget.afficheUI();
+            break;
+        }
     }
 }

@@ -23,6 +23,11 @@ public class Banque {
     @objid("8cbb231f-0ca2-40d7-a93c-6ebb0980c4c5")
     public List<Banque> autresBanques = new ArrayList<Banque>();
 
+    public Banque(String nom, List<CarteClient> carteClients){
+        nomBanque = nom;
+        carteClient = carteClients;
+    }
+
     //Getters and Setters
 
     @mdl.propgetter

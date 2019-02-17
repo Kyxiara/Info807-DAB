@@ -33,4 +33,12 @@ public class EtatDistrib {
     public float recupereBillets(){
         return 0;
     }
+
+    public void afficheUI(){
+        System.out.println("Oups no ui");
+    }
+
+    public void interractionUI(){
+        System.out.println("Oups no interraction");
+    }
 }

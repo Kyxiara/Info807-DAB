@@ -14,6 +14,11 @@ public class Carte {
     @objid ("5b083c1a-2860-48a2-915e-9b6c412aa41b")
     private int nbEssaisRestant;
 
+
+    public Carte(String noCarte){
+        this.noCarte = noCarte;
+    }
+
     //Methods
 
     @objid ("669d82cc-0a28-4209-8dd6-b043d2b81cb6")

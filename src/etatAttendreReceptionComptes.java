@@ -11,8 +11,12 @@ public class etatAttendreReceptionComptes extends EtatDistrib {
 
     void afficheSoldes(ArrayList<Compte> comptes){
         int i = -1;
-        for (Compte c: comptes) {
-            System.out.println(i++ + ". " + c.toString());
+        if(comptes != null){
+            for (Compte c: comptes) {
+                System.out.println(i++ + ". " + c.toString());
+            }
+        } else {
+            System.out.println("aucun compte trouvé");
         }
     }
 }
