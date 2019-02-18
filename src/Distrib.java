@@ -179,10 +179,6 @@ public class Distrib {
         etat.interractionUI();
     }
 
-    public static void ecrire(Couleur coul, String s) {
-        System.out.printf("\033[%d;1m%s\033[0m\n", coul.ordinal() + 31, s);
-    }
-
     public static void main(String[] args) {
         String noCarte = "123";
         Carte carteInseree = new Carte(noCarte);

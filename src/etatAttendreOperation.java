@@ -14,21 +14,23 @@ public class etatAttendreOperation extends EtatDistrib {
 
     @Override
     public void afficheUI() {
-        System.out.println("\nBienvenue au crédit agricole");
+        System.out.println("--------------------------------");
+        System.out.println("| Bienvenue au crédit agricole |");
+        System.out.println("--------------------------------");
     }
 
     @Override
     public void interractionUI() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("selectionner une opération :");
+        System.out.println("\nChoisissez une opération :");
         System.out.println("1 - Consultation");
         System.out.println("2 - Retrait");
         System.out.println("3 - Quitter");
         int choix = sc.nextInt();
-        if(choix == 2){
-            distrib.choisirOperation(NatureOperation.Retrait);
-        } else if (choix == 1){
+        if (choix == 1){
             distrib.choisirOperation(NatureOperation.Consultation);
+        } else if(choix == 2){
+            distrib.choisirOperation(NatureOperation.Retrait);
         } else {
             exit();
         }
