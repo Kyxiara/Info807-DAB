@@ -5,6 +5,12 @@ public class etatRecupereBillets extends EtatDistrib {
 
     public etatRecupereBillets(Distrib distrib) {
         super(distrib);
+        System.out.println("Recuperation des billets ...");
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         distrib.setEtat(new etatAttendreOperation(distrib));
         distrib.interractionUI();
     }
