@@ -200,11 +200,10 @@ public class Distrib {
         distribBourget.setBanqueDeRattachement(creditAgricole);
         distribBourget.carteInseree = carteInseree;  // l'utilisateur est déjà authentifié
 
-        while(true){
+        //while(true){
             distribBourget.afficheUI();
             distribBourget.interractionUI();
-            distribBourget.afficheUI();
-            break;
-        }
+            //break;
+        //}
     }
 }

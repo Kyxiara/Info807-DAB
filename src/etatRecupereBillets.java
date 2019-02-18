@@ -5,6 +5,8 @@ public class etatRecupereBillets extends EtatDistrib {
 
     public etatRecupereBillets(Distrib distrib) {
         super(distrib);
-        distrib.setEtat(new etatAttendreOperation(distrib)); //TODO
+        distrib.setEtat(new etatAttendreOperation(distrib));
+        distrib.afficheUI();
+        distrib.interractionUI();
     }
 }
