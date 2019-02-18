@@ -9,6 +9,7 @@ public class etatAffichageCompteSeul extends EtatDistrib {
 
     public void afficheCompte(Compte compte){
         System.out.println(compte.toString());
+        compte.selectionne(false);
         distrib.setEtat(new etatAttendreOperation(distrib));
         distrib.interractionUI();
     }
