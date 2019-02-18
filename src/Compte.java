@@ -1,5 +1,7 @@
 import com.modeliosoft.modelio.javadesigner.annotations.objid;
 
+import java.util.ArrayList;
+
 @objid ("87850a0f-5d60-4722-bb3d-ca023852cd42")
 public class Compte {
 
@@ -15,6 +17,8 @@ public class Compte {
     private float plafondRetrait;
 
     private EtatCompte etat = new etatNonSelectionne(this);
+
+    private ArrayList<OperationBancaire> mesOperations = new ArrayList<>();
 
     //Getters and Setters
 
@@ -65,8 +69,11 @@ public class Compte {
 
     @objid ("f60a3894-0db7-4ab0-bcb6-0ecf9f38eb11")
     public boolean retrait(float montant) {
-        if (!assezDargent(montant)) return false;
-        new OperationBancaire(montant, NatureOperation.Retrait); //TODO : find where stock this
+        if (!assezDargent(montant))
+            return false;
+        if (montant > plafondRetrait)
+            return false;
+        mesOperations.add(new OperationBancaire(montant, NatureOperation.Retrait));
         Solde -= montant;
         return true;
     }

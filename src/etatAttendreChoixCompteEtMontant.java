@@ -13,7 +13,7 @@ public class etatAttendreChoixCompteEtMontant extends EtatDistrib {
             distrib.setEtat(new etatAttendreOperation(distrib));
             return false;
         }
-        if (!compte.retrait(montant) || compte.getPlafondRetrait() < montant){
+        if (!compte.retrait(montant)){
             distrib.setEtat(new etatAttendreOperation(distrib));
             return false;
         }

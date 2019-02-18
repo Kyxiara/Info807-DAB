@@ -146,9 +146,13 @@ public class Distrib {
     }
 
     Compte getChoice(ArrayList<Compte> comptes){
-        System.out.println("Veuillez saisir un compte : ");
         Scanner sc = new Scanner(System.in);
-        return comptes.get(sc.nextInt());
+        int choice;
+        do{
+            System.out.println("Veuillez saisir un compte : ");
+            choice = sc.nextInt();
+        } while (choice < 0 || choice >= comptes.size());
+        return comptes.get(choice);
     }
 
     public void afficheCompte(Compte compte){
@@ -156,7 +160,7 @@ public class Distrib {
     }
 
     public boolean assezDargent(float montant) {
-        return true; //TODO
+        return true;  // ce distributeur est réapprovisionné toutes les secondes
     }
 
     public boolean retrait(float montant, Compte compte){

@@ -52,7 +52,14 @@ public class etatAttendreOperation extends EtatDistrib {
                 Scanner sc = new Scanner(System.in);
                 System.out.println("Veuillez saisir le montant a retiré : ");
                 float montant = sc.nextFloat();
-                distrib.retrait(montant, compteChoisi);
+                if(montant < 0) {
+                    System.err.println("ERREUR : un distributeur conforme n'a pas de touche négative => écran bleue / encrage des billets");
+                    montant = -montant;
+                }
+                if(!distrib.retrait(montant, compteChoisi)) {
+                    System.err.println("ce retrait n'a pas été autorisé");
+                    distrib.interractionUI();  // on attend la prochaine instruction
+                }
                 break;
         }
     }
