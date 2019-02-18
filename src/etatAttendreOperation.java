@@ -23,7 +23,7 @@ public class etatAttendreOperation extends EtatDistrib {
         System.out.println("2- Retrait");
         int choix = sc.nextInt();
         if(choix != 1){
-            System.err.println("cas non géré pour le moment");
+            distrib.choisirOperation(NatureOperation.Retrait);
         } else {
             distrib.choisirOperation(NatureOperation.Consultation);
         }

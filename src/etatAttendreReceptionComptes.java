@@ -10,7 +10,7 @@ public class etatAttendreReceptionComptes extends EtatDistrib {
     }
 
     void afficheSoldes(ArrayList<Compte> comptes){
-        int i = -1;
+        int i = 0;
         if(comptes != null){
             for (Compte c: comptes) {
                 System.out.println(i++ + ". " + c.toString());

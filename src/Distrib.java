@@ -186,7 +186,12 @@ public class Distrib {
     public static void main(String[] args) {
         String noCarte = "123";
         Carte carteInseree = new Carte(noCarte);
-        Client marcel = new Client();
+        Compte compteCheque = new Compte(500, "0123456789", 200);
+        Compte compteEpargne = new Compte(2569, "9876543210", 100);
+        ArrayList<Compte> comptes = new ArrayList<Compte>();
+        comptes.add(compteCheque);
+        comptes.add(compteEpargne);
+        Client marcel = new Client(comptes);
         CarteClient cc = new CarteClient(noCarte, marcel);
         ArrayList<CarteClient> cartesDeLaBanque = new ArrayList<>();
         cartesDeLaBanque.add(cc);

@@ -47,6 +47,12 @@ public class Compte {
 
     //Methods
 
+    public Compte(float Solde, String noCompte, float plafondRetrait){
+        this.Solde = Solde;
+        this.noCompte = noCompte;
+        this.plafondRetrait = plafondRetrait;
+    }
+
     @objid ("ed3c524f-7cad-487f-b2af-3638f09e55e7")
     public String toString() {
         return etat.toString();
